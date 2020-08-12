@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": 3,
+      "title": "Чізбургер",
+      "description": "Біфштекс із натуральної яловичини, шматочок сиру “Чеддер”, шматочок маринованого огірка та цибуля, заправлені гірчицею і кетчупом, у булочці з пшеничного борошна.",
+      "image": "https://www.mcdonalds.ua/content/dam/Ukraine/Item_Images/hero.Sdwch_Cheeseburger.png",
+      "price": 30
+    },
+    {
+      "id": 7,
+      "title": "Картопля Фрі велика",
+      "description": "Добірна картопля, засмажена в натуральній олії і трохи підсолена.",
+      "image": "https://www.mcdonalds.ua/content/dam/Ukraine/Item_Images/hero.FFLarge.png",
+      "price": 25
+    },
+    {
+      "id": 9,
+      "title": "Фанта середня",
+      "description": "Всесвітньо відомий освіжаючий напій.",
+      "image": "https://www.mcdonalds.ua/content/dam/Ukraine/Item_Images/hero.FantaLarge.png",
+      "price": 20
+    }
+  ]
+}
