@@ -1,17 +1,19 @@
 import React from 'react';
+
 import { Product } from '../../shared/generated/graphql';
+import ProductCard from './ProductCard/ProductCard';
+
+import './productList.scss';
 
 interface Props {
-  products: Product[]
+  products: Product[];
 }
 
 const ProductsList: React.FC<Props> = ({ products }) => {
   return (
-    <ul>
+    <ul className='product-list'>
       {products.map((item: Product) => {
-        return (
-          <li key={item.id}>{item.title}</li>
-        );
+        return <ProductCard key={item.id} product={item} />;
       })}
     </ul>
   );

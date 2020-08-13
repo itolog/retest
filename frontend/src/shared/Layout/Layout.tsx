@@ -11,7 +11,7 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div className='layout'>
-      <main className='main'>
+      <main className='centred main'>
         {children}
       </main>
       <Footer />

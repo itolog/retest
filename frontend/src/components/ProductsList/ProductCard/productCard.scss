@@ -1,0 +1,74 @@
+@import '../../../shared/styles/mixins.scss';
+
+$bg_main_color: rgb(225, 240, 237);
+.product-card {
+  display: flex;
+  margin-bottom: 5%;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 150px;
+  flex-flow: row wrap;
+  background: $bg_main_color;
+  box-shadow: 0px 7px 5px -4px rgba(0, 0, 0, 0.75);
+  @include desktop() {
+    width: 800px;
+  }
+  @include laptop() {
+    width: 100%;
+  }
+}
+
+.product-info {
+  flex: 3;
+}
+
+.product-card--img {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.product-actions {
+  flex: 1;
+  height: 100%;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+}
+
+.input-price {
+  width: 45px;
+  height: 30px;
+  border: none;
+  text-align: center;
+  outline: none;
+  background: $bg_main_color;
+}
+
+.product-action--btns {
+  width: 30px;
+  height: 30px;
+}
+
+.product-title {
+  text-align: center;
+}
+
+.product-description {
+  font-size: 1em;
+  margin: 0.5em 1em 0.3em 1em;
+}
+
+.delete-button {
+  font-size: 2em;
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: 0.4s;
+
+  &:hover {
+    color: red;
+  }
+}

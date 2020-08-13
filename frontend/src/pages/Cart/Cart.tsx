@@ -20,11 +20,11 @@ const Cart: React.FC = memo(() => {
     }
   }, [data]);
 
-  if(error) return  <Error message={error.message} />;
 
   return (
     <Layout >
       <section className='cart-page'>
+        {error && <Error message={error.message} />}
         <h1>Cart Page</h1>
         {loading ? <h1>LOADING ...</h1> : <ProductsList products={products} />}
       </section>
