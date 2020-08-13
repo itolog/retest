@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-const Shipping = () => {
+import Layout from '../../shared/Layout/Layout';
+
+const Shipping: React.FC = memo(() => {
   return (
-    <div>
-      <h1>Shipping Page</h1>
-    </div>
+    <Layout>
+      <section className='shipping-page'>
+        <h1>Shipping Page</h1>
+      </section>
+
+    </Layout>
   );
-};
+});
 
 export default Shipping;

@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
-import {config} from './shared/config/config'
-import './index.css';
+import { config } from './shared/config/config';
+import './shared/styles/root.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

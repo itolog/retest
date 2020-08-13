@@ -1,0 +1,17 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type Product {
+    description: String!
+    id: Int!
+    image: String!
+    price: Int!
+    title: String!
+}
+
+type Query {
+    products: [Product!]
+}

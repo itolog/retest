@@ -9,7 +9,7 @@ import {
 import Cart from '../pages/Cart/Cart';
 import Shipping from '../pages/Shipping/Shipping';
 
-const AppRouter = () => {
+const AppRouter: React.FC = () => {
   return (
     <Router>
       <Switch>
