@@ -18,7 +18,7 @@ const ProductImage: React.FC<Props> = memo(({ alt, src, w = 100, h = 100 }) => {
 
   return (
     <div className='wrapp-image'>
-      {!isLoaded ? <div className='placeholder'></div> : null}
+      {!isLoaded ? <div className='placeholder'/> : null}
       <img
         loading='lazy'
         className='image'

@@ -7,26 +7,28 @@ import { GET_PRODUCTS } from './gql';
 import { Product } from '../../shared/generated/graphql';
 import Error from '../../shared/components/Error/Error';
 import ProductsList from '../../components/ProductsList/ProductsList';
+import ProductSkeleton from '../../shared/UI/ProductSkeleton/ProductSkeleton';
 import Layout from '../../shared/Layout/Layout';
 
 const Cart: React.FC = memo(() => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  const { loading, error, data } = useQuery(GET_PRODUCTS );
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
 
   useEffect(() => {
-    if(data) {
+    if (!loading) {
       setProducts(data.products);
     }
-  }, [data]);
+  }, [data, loading]);
 
 
   return (
-    <Layout >
+    <Layout>
       <section className='cart-page'>
         {error && <Error message={error.message} />}
         <h1>Cart Page</h1>
-        {loading ? <h1>LOADING ...</h1> : <ProductsList products={products} />}
+        {!products.length && <ProductSkeleton />}
+        {products.length && <ProductsList products={products} />}
       </section>
     </Layout>
   );

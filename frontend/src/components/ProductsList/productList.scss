@@ -1,4 +1,11 @@
+@import '../../shared/styles/mixins.scss';
+
 .product-list {
   display: flex;
   flex-flow: column;
+  width: 700px;
+
+  @include tablets() {
+    width: 90%;
+  }
 }

@@ -1,0 +1,14 @@
+@import '../../../../shared/styles/variables.scss';
+
+.product-action--btns {
+  width: 30px;
+  height: 30px;
+}
+.input-price {
+  width: 45px;
+  height: 30px;
+  border: none;
+  text-align: center;
+  outline: none;
+  background: $bg_main_color;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Product } from '../../shared/generated/graphql';
 import ProductCard from './ProductCard/ProductCard';
@@ -9,7 +9,7 @@ interface Props {
   products: Product[];
 }
 
-const ProductsList: React.FC<Props> = ({ products }) => {
+const ProductsList: React.FC<Props> = memo(({ products }) => {
   return (
     <ul className='product-list'>
       {products.map((item: Product) => {
@@ -17,6 +17,6 @@ const ProductsList: React.FC<Props> = ({ products }) => {
       })}
     </ul>
   );
-};
+});
 
 export default ProductsList;
