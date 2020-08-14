@@ -5,5 +5,5 @@ export interface ProductsState {
     [id: number]: Product;
   };
   products_ids: number[];
-  error: string;
+  error: string | null;
 }

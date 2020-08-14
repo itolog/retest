@@ -13,7 +13,9 @@ const store = createStore();
 
 const client = new ApolloClient({
   uri: config.API_ENDPOINT,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache({
+    addTypename: false
+  }),
 });
 
 ReactDOM.render(
