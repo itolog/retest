@@ -1,9 +1,11 @@
 import { Product } from '../../shared/generated/graphql';
 
+export interface Products {
+  [id: number]: Product;
+}
+
 export interface ProductsState {
-  products: {
-    [id: number]: Product;
-  };
+  products: Products;
   products_ids: number[];
-  error: string | null;
+  error: Error | null;
 }
