@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useCallback, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,7 +9,6 @@ import Error from '../../shared/components/Error/Error';
 import ProductsList from '../../components/ProductsList/ProductsList';
 import ProductSkeleton from '../../shared/UI/ProductSkeleton/ProductSkeleton';
 import Layout from '../../shared/Layout/Layout';
-import { Product } from '../../shared/generated/graphql';
 
 // Store
 import { Actions } from '../../store/products/actions';
@@ -19,15 +18,25 @@ const Cart: React.FC = memo(() => {
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const { loading, error, data, refetch } = useQuery(GET_PRODUCTS);
 
-  const productsData: Product[] = (data && data.products) ?? [];
+  const fetchData = useCallback(() => {
+    if (data) {
+      dispatch(Actions.fetchProductsAsync.request(data.products));
+    }
+  }, [data]);
 
   useEffect(() => {
-    if (productsData) {
-      dispatch(Actions.fetchProductsAsync.request(productsData));
+    fetchData();
+  }, [data]);
+
+  useEffect(() => {
+    if (!loading && products.length) {
+      setIsLoaded(true);
     }
-  }, [productsData, loading]);
+  }, [products, loading]);
 
   const hendleRefetch = async () => {
     const { data } = await refetch();
@@ -39,14 +48,13 @@ const Cart: React.FC = memo(() => {
       <section className='cart-page'>
         {error && <Error message={error.message} />}
         <h1>Cart Page</h1>
-        {loading && !productsData.length && <ProductSkeleton />}
-        {!loading && productsData.length ? <ProductsList products={products} /> : null}
-
-        {!loading && !products.length && (
+        {isLoaded && !products.length && (
           <button className='refetch-button' onClick={hendleRefetch}>
             обновить
           </button>
         )}
+        {!isLoaded ? <ProductSkeleton /> : <ProductsList products={products} />}
+        {/* {!loading ? <ProductsList products={products} /> : null} */}
       </section>
     </Layout>
   );
