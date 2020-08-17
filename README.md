@@ -1,5 +1,10 @@
-# Запуск проекта
+# Запуск проекта (Docker)
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.development.yml up --build
+```
 
+
+# Запуск проекта (Manually)
 ## Backend
 ### Перейти в директорию backend
 ```bash

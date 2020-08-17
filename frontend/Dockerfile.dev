@@ -1,0 +1,15 @@
+FROM node:12.18.3-alpine3.9 
+
+RUN apk add --no-cache bash
+
+WORKDIR /usr/src/app
+
+COPY ./wait-for-it.sh /usr/wait-for-it.sh
+RUN chmod +x /usr/wait-for-it.sh
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+

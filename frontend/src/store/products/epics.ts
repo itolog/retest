@@ -12,8 +12,7 @@ const loadProductsEpic: Epic = (action$) =>
       return of(Actions.fetchProductsAsync.success(payload));
     }),
     catchError((error) => of(Actions.fetchProductsAsync.failure(error))),
-    takeUntil(action$.pipe(filter(isActionOf(Actions.fetchProductsAsync.cancel)))),
-    take(1),
+    takeUntil(action$.pipe(filter(isActionOf(Actions.fetchProductsAsync.cancel)))), 
   );
 
 export const epics = [loadProductsEpic];

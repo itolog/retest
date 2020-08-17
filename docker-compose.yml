@@ -1,0 +1,32 @@
+version: '3.0'
+services:
+  api:
+    container_name: retest-api
+    build: ./backend
+    command: npm run start
+    restart: unless-stopped
+    networks:
+      - retest-net
+    ports:
+      - 4000:4000
+    environment:
+      - PORT=4000
+  frontend:
+    container_name: retest-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    command: sh -c '/usr/wait-for-it.sh --timeout=0 api:4000 -- serve -s build -l 3000'
+    depends_on:
+      - api
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    networks:
+      - retest-net
+    stdin_open: true
+    tty: true
+
+networks:
+  retest-net:
+    driver: bridge

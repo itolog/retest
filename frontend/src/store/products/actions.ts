@@ -16,4 +16,4 @@ export const Actions = {
   removeProducts: (id: number) => action(ActionTypes.REMOVE_PRODUCTS, id),
 };
 
-export type ProductsAction = ActionType<typeof Actions>;
+export type ProductsActionType = ActionType<typeof Actions>;

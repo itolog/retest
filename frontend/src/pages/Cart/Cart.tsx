@@ -38,7 +38,7 @@ const Cart: React.FC = memo(() => {
     }
   }, [products, loading]);
 
-  const hendleRefetch = async () => {
+  const handleRefetch = async () => {
     const { data } = await refetch();
     dispatch(Actions.fetchProductsAsync.request(data.products));
   };
@@ -49,12 +49,11 @@ const Cart: React.FC = memo(() => {
         {error && <Error message={error.message} />}
         <h1>Cart Page</h1>
         {isLoaded && !products.length && (
-          <button className='refetch-button' onClick={hendleRefetch}>
+          <button className='refetch-button' onClick={handleRefetch}>
             обновить
           </button>
         )}
         {!isLoaded ? <ProductSkeleton /> : <ProductsList products={products} />}
-        {/* {!loading ? <ProductsList products={products} /> : null} */}
       </section>
     </Layout>
   );

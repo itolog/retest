@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import './layout.scss';
 import Footer from '../../components/Footer/Footer';
@@ -8,7 +8,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout: React.FC<Props> = memo(({ children }) => {
   return (
     <div className='layout'>
       <ErrorBoundary>
@@ -17,6 +17,6 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Footer />
     </div>
   );
-};
+});
 
 export default Layout;

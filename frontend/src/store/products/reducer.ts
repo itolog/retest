@@ -1,4 +1,4 @@
-import { ProductsAction, Actions, ActionTypes } from './actions';
+import { ProductsActionType, Actions, ActionTypes } from './actions';
 import { getType } from 'typesafe-actions';
 import { ProductsState, Products } from './types';
 
@@ -9,12 +9,12 @@ const initialState: ProductsState = {
 };
 
 function removeKey(obj: Products, deleteKey: number) {
-  let clone = Object.assign({}, obj);
+  const clone = Object.assign({}, obj);
   delete clone[deleteKey];
   return clone;
 }
 
-export function reducer(state = initialState, action: ProductsAction): ProductsState {
+export function reducer(state = initialState, action: ProductsActionType): ProductsState {
   switch (action.type) {
     case getType(Actions.fetchProductsAsync.request): {
       const products = action.payload.reduce(
