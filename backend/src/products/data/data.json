@@ -5,21 +5,21 @@
       "title": "Чізбургер",
       "description": "Біфштекс із натуральної яловичини, шматочок сиру “Чеддер”, шматочок маринованого огірка та цибуля, заправлені гірчицею і кетчупом, у булочці з пшеничного борошна.",
       "image": "https://www.mcdonalds.com/is/image/content/dam/ua/nutrition/nfl-product/product/hero/Sdwch_Cheeseburger.png?$Product_Desktop$",
-      "price": 30
+      "price": "30.50"
     },
     {
       "id": 7,
       "title": "Картопля Фрі велика",
       "description": "Добірна картопля, засмажена в натуральній олії і трохи підсолена.",
       "image": "https://www.mcdonalds.com/is/image/content/dam/ua/nutrition/nfl-product/product/hero/FFLarge.png?$Product_Desktop$",
-      "price": 25
+      "price": "25.25"
     },
     {
       "id": 9,
       "title": "Фанта середня",
       "description": "Всесвітньо відомий освіжаючий напій.",
       "image": "https://www.mcdonalds.com/is/image/content/dam/ua/nutrition/nfl-product/product/hero/CocaColaMedium.png?$Product_Desktop$",
-      "price": 20
+      "price": "20.00"
     }
   ]
 }

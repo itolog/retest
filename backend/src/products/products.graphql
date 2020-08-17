@@ -7,5 +7,5 @@ type Product{
     title: String!
     description: String!
     image: String!
-    price: Int!
+    price: String!
 }

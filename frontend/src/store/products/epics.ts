@@ -1,7 +1,7 @@
 import { Epic, ofType } from 'redux-observable';
 import { of } from 'rxjs';
 import { getType, isActionOf } from 'typesafe-actions';
-import { catchError, switchMap, takeUntil, filter, take } from 'rxjs/operators';
+import { catchError, switchMap, takeUntil, filter } from 'rxjs/operators';
 
 import { Actions } from './actions';
 

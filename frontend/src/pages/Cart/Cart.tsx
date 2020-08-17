@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useCallback, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,14 +10,17 @@ import Error from '../../shared/components/Error/Error';
 import ProductsList from '../../components/ProductsList/ProductsList';
 import ProductSkeleton from '../../shared/UI/ProductSkeleton/ProductSkeleton';
 import Layout from '../../shared/Layout/Layout';
+import ActionButton from '../../shared/UI/ActionButton/ActionButton';
 
 // Store
 import { Actions } from '../../store/products/actions';
 import { getProducts } from '../../store/products/selectors';
 import { getTotalPrice } from '../../store/orders/selectors';
-import {Actions as orderActions} from '../../store/orders/actions';
+import { Actions as orderActions } from '../../store/orders/actions';
 
 const Cart: React.FC = memo(() => {
+  const history = useHistory();
+
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
   const totalPrice = useSelector(getTotalPrice) as number;
@@ -34,8 +38,7 @@ const Cart: React.FC = memo(() => {
   useEffect(() => {
     fetchData();
   }, [data]);
-
-
+  
   useEffect(() => {
     if (!loading && products.length) {
       setIsLoaded(true);
@@ -46,11 +49,15 @@ const Cart: React.FC = memo(() => {
   // UPDATE TOTAL PRICE
   useEffect(() => {
     dispatch(orderActions.updateTotalPrice(totalPrice));
-  }, [totalPrice, dispatch ]);
+  }, [totalPrice, dispatch]);
 
   const handleRefetch = async () => {
     const { data } = await refetch();
     dispatch(Actions.fetchProductsAsync.request(data.products));
+  };
+
+  const handleBuy = () => {
+    history.push('/shipping');
   };
 
   return (
@@ -58,17 +65,20 @@ const Cart: React.FC = memo(() => {
       <section className='cart-page'>
         {error && <Error message={error.message} />}
         <h1>Cart Page</h1>
-        {isLoaded && !products.length && (
-          <button className='refetch-button' onClick={handleRefetch}>
-            обновить
-          </button>
+        {isLoaded && !products.length && (<ActionButton
+            title='обновить'
+            handler={handleRefetch}
+          />
         )}
         {!isLoaded ? <ProductSkeleton /> : <ProductsList products={products} />}
         {/* BUY SECTION */}
-        <div className='section-buy'>
-          <span>{totalPrice}</span>
-          <button>заказать</button>
-        </div>
+        {products.length ? <div className='section-buy'>
+          <span className='total-price'>{totalPrice} &#8372;</span>
+          <ActionButton
+            title='Заказать'
+            handler={handleBuy}
+          />
+        </div> : null}
       </section>
     </Layout>
   );

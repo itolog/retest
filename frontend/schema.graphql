@@ -8,7 +8,7 @@ type Product {
     description: String!
     id: Int!
     image: String!
-    price: Int!
+    price: String!
     title: String!
 }
 
