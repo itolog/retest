@@ -1,0 +1,39 @@
+
+$input_color: rgb(69, 182, 125);
+$input_border_size: 3px;
+$input_main_color: #110404;
+
+
+.pfInputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 70px;
+  margin-bottom: 30px;
+}
+.inputWrapp {
+  display: flex;
+  align-items: center;
+}
+
+.textInput {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2em;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background: $input_main_color;
+  color: $input_color;
+  border-bottom: $input_border_size solid white;
+  &:focus {
+    border-bottom: $input_border_size solid $input_color;
+  }
+}
+
+.error {
+  color: red;
+  height: 25px;
+}

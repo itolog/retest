@@ -38,7 +38,7 @@ const Cart: React.FC = memo(() => {
   useEffect(() => {
     fetchData();
   }, [data]);
-  
+
   useEffect(() => {
     if (!loading && products.length) {
       setIsLoaded(true);
