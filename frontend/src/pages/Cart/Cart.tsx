@@ -13,10 +13,13 @@ import Layout from '../../shared/Layout/Layout';
 // Store
 import { Actions } from '../../store/products/actions';
 import { getProducts } from '../../store/products/selectors';
+import { getTotalPrice } from '../../store/orders/selectors';
+import {Actions as orderActions} from '../../store/orders/actions';
 
 const Cart: React.FC = memo(() => {
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
+  const totalPrice = useSelector(getTotalPrice) as number;
 
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -32,11 +35,18 @@ const Cart: React.FC = memo(() => {
     fetchData();
   }, [data]);
 
+
   useEffect(() => {
     if (!loading && products.length) {
       setIsLoaded(true);
     }
   }, [products, loading]);
+
+
+  // UPDATE TOTAL PRICE
+  useEffect(() => {
+    dispatch(orderActions.updateTotalPrice(totalPrice));
+  }, [totalPrice, dispatch ]);
 
   const handleRefetch = async () => {
     const { data } = await refetch();
@@ -54,6 +64,11 @@ const Cart: React.FC = memo(() => {
           </button>
         )}
         {!isLoaded ? <ProductSkeleton /> : <ProductsList products={products} />}
+        {/* BUY SECTION */}
+        <div className='section-buy'>
+          <span>{totalPrice}</span>
+          <button>заказать</button>
+        </div>
       </section>
     </Layout>
   );

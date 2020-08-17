@@ -5,3 +5,12 @@
   align-items: center;
   flex-flow: column;
 }
+
+.section-buy {
+  display: flex;
+  flex-flow: column;
+  width: 80%;
+  align-items: flex-end;
+  height: 80px;
+  justify-content: space-around;
+}

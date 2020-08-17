@@ -39,7 +39,9 @@ const ProductCard: React.FC<Props> = memo(({ product }) => {
         {/* Actions */}
         <div className='product-actions'>
           <div className='product-action--left'>
-            <QtyField />
+            <QtyField
+              product_id={product.id}
+            />
             <span>{product.price} &#8372;</span>
           </div>
 

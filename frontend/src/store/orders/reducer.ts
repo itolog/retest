@@ -1,8 +1,9 @@
 import { ActionTypes, OrderActionType } from './actions';
 import { OrderState } from './types';
+import { Order } from '../../shared/interfaces/order';
 
 const initialState: OrderState = {
-  order: null
+  order: {} as Order
 };
 
 export function reducer(
@@ -16,12 +17,11 @@ export function reducer(
       };
     }
     case ActionTypes.UPDATE_ORDER_QUANTITY: {
-      if (!state.order) return state;
       return {
         order: {
           ...state.order,
           items: {
-            ...state.order?.items,
+            ...state.order.items,
             [action.payload.product_id]: {
               product_id: action.payload.product_id,
               quantity: action.payload.quantity
@@ -31,7 +31,6 @@ export function reducer(
       };
     }
     case ActionTypes.UPDATE_ORDER_TOTAL_PRICE: {
-      if (!state.order) return state;
       return {
         order: {
           ...state.order,
@@ -40,7 +39,6 @@ export function reducer(
       };
     }
     case ActionTypes.UPDATE_ORDER: {
-      if (!state.order) return state;
       return {
         order: {
           ...state.order,

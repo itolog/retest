@@ -3,6 +3,7 @@ import { of } from 'rxjs';
 import { getType } from 'typesafe-actions';
 import { switchMap } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
+import {OrderItem, Order} from '../../shared/interfaces/order';
 
 import { Actions } from './actions';
 import {Actions as ProductAction, ActionTypes } from '../products/actions';
@@ -12,20 +13,21 @@ function getRandomInt(max: number) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-const addInvoiceEpic: Epic = (action$) =>
+
+const addOrderEpic: Epic = (action$) =>
   action$.pipe(
     ofType(getType(ProductAction.fetchProductsAsync.success)),
     switchMap(({ payload }) => {
       // generete ID for INVOICE
       const invoice_id = uuidv4();
-      // generete ID for customer
+      // generete ID for customer (mock)
       const customer_id = getRandomInt(10);
-      const items = payload.map((item: any) => ({
-        id: 1,
+      const items = payload.map((item: Order) => ({
         invoice_id,
         product_id: item.id,
         quantity: 1
       }));
+
       const res = items.reduce(
         (acc: any, invoice: any) => ({
           ...acc,
@@ -44,7 +46,7 @@ const addInvoiceEpic: Epic = (action$) =>
     })
   );
 
-const updateInvoiceEpic: Epic = (action$, state$) =>
+const updateOrderEpic: Epic = (action$, state$) =>
   action$.pipe(
     ofType(ActionTypes.REMOVE_PRODUCTS),
     switchMap(() => {
@@ -61,4 +63,4 @@ const updateInvoiceEpic: Epic = (action$, state$) =>
     })
   );
 
-export const epics = [addInvoiceEpic, updateInvoiceEpic];
+export const epics = [addOrderEpic, updateOrderEpic];

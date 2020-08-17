@@ -19,7 +19,7 @@ export const Actions = {
   updateQuantity: (payload: OrderItem) =>
     action(ActionTypes.UPDATE_ORDER_QUANTITY, payload),
 
-  updateTotal: (payload: number) =>
+  updateTotalPrice: (payload: number) =>
     action(ActionTypes.UPDATE_ORDER_TOTAL_PRICE, payload)
 };
 
