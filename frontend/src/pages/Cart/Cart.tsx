@@ -33,7 +33,7 @@ const Cart: React.FC = memo(() => {
     if (data) {
       dispatch(Actions.fetchProductsAsync.request(data.products));
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   useEffect(() => {
     fetchData();
@@ -44,7 +44,6 @@ const Cart: React.FC = memo(() => {
       setIsLoaded(true);
     }
   }, [products, loading]);
-
 
   // UPDATE TOTAL PRICE
   useEffect(() => {
@@ -65,20 +64,15 @@ const Cart: React.FC = memo(() => {
       <section className='cart-page'>
         {error && <Error message={error.message} />}
         <h1>Cart Page</h1>
-        {isLoaded && !products.length && (<ActionButton
-            title='обновить'
-            handler={handleRefetch}
-          />
-        )}
+        {isLoaded && !products.length && <ActionButton title='обновить' handler={handleRefetch} />}
         {!isLoaded ? <ProductSkeleton /> : <ProductsList products={products} />}
         {/* BUY SECTION */}
-        {products.length ? <div className='section-buy'>
-          <span className='total-price'>{totalPrice} &#8372;</span>
-          <ActionButton
-            title='Заказать'
-            handler={handleBuy}
-          />
-        </div> : null}
+        {products.length ? (
+          <div className='section-buy'>
+            <span className='total-price'>{totalPrice} &#8372;</span>
+            <ActionButton title='Заказать' handler={handleBuy} />
+          </div>
+        ) : null}
       </section>
     </Layout>
   );

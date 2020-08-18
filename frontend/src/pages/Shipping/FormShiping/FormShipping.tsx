@@ -10,12 +10,13 @@ import { Values } from './types';
 import './formShipping.scss';
 
 // Store
-import { getTotalPrice } from '../../../store/orders/selectors';
+import { getTotalPrice, getOrder } from '../../../store/orders/selectors';
 
 import FormShippingSchema from './validate';
 
 const FormShipping: React.FC = memo(() => {
   const totalPrice = useSelector(getTotalPrice) as number;
+  const order = useSelector(getOrder);
 
   const [selectValue, setSelectValue] = useState<string>('Free shipping');
   const [shippingPrice, setShippingPrice] = useState<number>(0);
@@ -24,7 +25,16 @@ const FormShipping: React.FC = memo(() => {
   );
 
   const handleSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-    alert(JSON.stringify(values, null, 2));
+    alert(
+      JSON.stringify(
+        {
+          shippingData: values,
+          order,
+        },
+        null,
+        2,
+      ),
+    );
     setSubmitting(false);
   };
 

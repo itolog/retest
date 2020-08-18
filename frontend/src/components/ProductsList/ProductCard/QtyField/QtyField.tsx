@@ -24,7 +24,7 @@ const QtyField: React.FC<Props> = memo(({ product_id }) => {
         }),
       );
     }
-  }, [priceValue]);
+  }, [priceValue, product_id, dispatch]);
 
   const handleChangeProductQty = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
