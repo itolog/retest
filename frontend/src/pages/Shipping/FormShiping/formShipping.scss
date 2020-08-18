@@ -7,6 +7,7 @@
   justify-content: space-between;
   background: white;
   padding: 5%;
+  margin-bottom: 5%;
 }
 
 .form-label {
@@ -17,6 +18,18 @@
 .form-item {
   display: flex;
   justify-content: space-between;
+}
+
+.form-select {
+  margin-bottom: 7%;
+  height: 30px;
+}
+
+.form-shipping-total {
+  text-align: center;
+  margin: 7% 0 0 0;
+  font-weight: 600;
+  font-family: sans-serif;
 }
 
 .pay-button {
@@ -33,10 +46,12 @@
   text-decoration: none;
   cursor: pointer;
 }
+
 .pay-button:hover {
   background: linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
   background-color: #68a54b;
 }
+
 .pay-button:active {
   position: relative;
   top: 1px;

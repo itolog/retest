@@ -5,7 +5,9 @@ const FormShippingSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Слишком короткое имя!').required('Заполните'),
   adress: Yup.string()
     .required('Заполните'),
-  phone: Yup.string().required()
+  phone: Yup.string().required('Заполните'),
+  shipping: Yup.string()
+    .required('Заполните'),
 });
 
 export default FormShippingSchema;
