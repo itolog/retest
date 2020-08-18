@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import './qtyField.scss';
@@ -7,13 +7,24 @@ import './qtyField.scss';
 import { Actions } from '../../../../store/orders/actions';
 
 interface Props {
-  product_id: number
+  product_id: number;
 }
 
 const QtyField: React.FC<Props> = memo(({ product_id }) => {
   const dispatch = useDispatch();
 
   const [priceValue, setPriceValue] = useState<number>(1);
+
+  useEffect(() => {
+    if (priceValue > 0 && priceValue <= 50) {
+      dispatch(
+        Actions.updateQuantity({
+          product_id,
+          quantity: priceValue,
+        }),
+      );
+    }
+  }, [priceValue]);
 
   const handleChangeProductQty = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
@@ -25,23 +36,14 @@ const QtyField: React.FC<Props> = memo(({ product_id }) => {
   const handleMinus = useCallback(() => {
     if (priceValue > 1) {
       setPriceValue(priceValue - 1);
-      dispatch(Actions.updateQuantity({
-        product_id,
-        quantity: priceValue - 1
-      }));
     }
-  }, [priceValue, product_id, dispatch]);
+  }, [priceValue]);
 
   const handlePlus = useCallback(() => {
     if (priceValue < 50) {
       setPriceValue(priceValue + 1);
-      dispatch(Actions.updateQuantity({
-        product_id,
-        quantity: priceValue + 1
-      }));
     }
-  }, [priceValue, product_id, dispatch]);
-
+  }, [priceValue]);
 
   return (
     <div className='quantity-field'>

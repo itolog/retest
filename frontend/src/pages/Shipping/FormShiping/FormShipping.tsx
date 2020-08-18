@@ -16,13 +16,14 @@ import FormShippingSchema from './validate';
 
 const FormShipping: React.FC = memo(() => {
   const totalPrice = useSelector(getTotalPrice) as number;
+
   const [selectValue, setSelectValue] = useState<string>('Free shipping');
   const [shippingPrice, setShippingPrice] = useState<number>(0);
   const [selectExpressValue, setSelectExpressValue] = useState<string>(
     'Express shipping- additional 9.99 €',
   );
 
-  const handleSubmit = (values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
+  const handleSubmit = (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
     alert(JSON.stringify(values, null, 2));
     setSubmitting(false);
   };
@@ -38,7 +39,6 @@ const FormShipping: React.FC = memo(() => {
   };
 
   useEffect(() => {
-    console.log(totalPrice);
     if (totalPrice >= 300) {
       setSelectValue('Free express shipping');
       setSelectExpressValue('Free express shipping');
