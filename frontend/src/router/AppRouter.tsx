@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import Loader from '../shared/UI/Loader/Loader';
 
-const Cart = React.lazy(() => import('../pages/Cart/Cart'));
+import Cart from '../pages/Cart/Cart';
+
 const Shipping = React.lazy(() => import('../pages/Shipping/Shipping'));
 
 const AppRouter: React.FC = () => {

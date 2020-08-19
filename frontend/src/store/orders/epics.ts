@@ -12,6 +12,7 @@ function getRandomInt(max: number) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
+// Add Order after load from server.
 const addOrderEpic: Epic = (action$) =>
   action$.pipe(
     ofType(getType(ProductAction.fetchProductsAsync.success)),

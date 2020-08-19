@@ -1,13 +1,18 @@
+@import '../../../shared/styles/mixins';
+
 .form {
-  min-width: 280px;
+  width: 400px;
   display: flex;
   flex-direction: column;
-  max-width: 500px;
   min-height: 300px;
   justify-content: space-between;
   background: white;
-  padding: 5%;
+  padding: 5% 2%;
   margin-bottom: 5%;
+
+  @include phones(){
+    width: 90%;
+  }
 }
 
 .form-label {

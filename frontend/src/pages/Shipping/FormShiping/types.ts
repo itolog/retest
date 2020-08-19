@@ -1,6 +1,6 @@
 export interface Values {
   name: string,
-  adress: string,
+  address: string,
   email: string,
   phone: string,
   shipping: string

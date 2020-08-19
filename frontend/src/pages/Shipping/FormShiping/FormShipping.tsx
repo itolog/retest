@@ -62,7 +62,7 @@ const FormShipping: React.FC = memo(() => {
       <Formik
         initialValues={{
           name: '',
-          adress: '',
+          address: '',
           email: '',
           phone: '',
           shipping: selectValue,
@@ -73,16 +73,22 @@ const FormShipping: React.FC = memo(() => {
       >
         {({ handleSubmit, isSubmitting, isValid }) => (
           <form className='form' onSubmit={handleSubmit}>
-            <InputControl label='name' name='name' type='text' placeholder='name' />
             <InputControl
-              label='Adress'
-              name='adress'
+              isRequired={true}
+              label='Name'
+              name='name'
               type='text'
-              placeholder='Evengreen terrace'
+              placeholder='Garry' />
+            <InputControl
+              isRequired={true}
+              label='Address'
+              name='address'
+              type='text'
+              placeholder='Elm Street, 1428'
             />
             <InputControl label='Phone' type='text' name='phone' placeholder='+48' />
 
-            <InputControl label='Email' name='email' type='text' placeholder='test@google.com' />
+            <InputControl label='E-mail' name='email' type='text' placeholder='test@google.com' />
 
             <Field
               as='select'

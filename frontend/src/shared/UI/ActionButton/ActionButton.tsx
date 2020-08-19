@@ -13,7 +13,7 @@ interface Props {
 const ActionButton: React.FC<Props> = ({
                                          handler,
                                          title, disabled = false,
-                                         isValid=true,
+                                         isValid = true,
                                          type = 'button'
                                        }) => {
   return (
